@@ -22,14 +22,14 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent.SelectionChangedHandler;
 
-public class Tab_Role extends VerticalLayoutContainer implements InterfaceGridOperate {
+public class Tab_RoleMenu extends BorderLayoutContainer implements InterfaceGridOperate {
 	
 	private RoleModelProperties properties = GWT.create(RoleModelProperties.class);
 	private Grid<RoleModel> grid = this.buildGrid();
 	private TextField roleName = new TextField();
-	//private Page_TreeMenu treeMenu = new Page_TreeMenu();
+	private Page_RoleMenu treeMenu = new Page_RoleMenu();
 	
-	public Tab_Role() {
+	public Tab_RoleMenu() {
 		
 		SearchBarBuilder searchBarBuilder = new SearchBarBuilder(this);
 		searchBarBuilder.addTextField(roleName, "권한명", 150, 50, true); 
@@ -39,30 +39,27 @@ public class Tab_Role extends VerticalLayoutContainer implements InterfaceGridOp
 		searchBarBuilder.addDeleteButton();
 		
 		this.setBorders(false);
-		this.add(searchBarBuilder.getSearchBar(), new VerticalLayoutData(1, 40));
-		this.add(grid, new VerticalLayoutData(1, 1));
 		
+		VerticalLayoutContainer roleContainer  = new VerticalLayoutContainer(); 
 		
-//		VerticalLayoutContainer roleContainer  = new VerticalLayoutContainer(); 
-//		
-//		roleContainer.add(searchBarBuilder.getSearchBar(), new VerticalLayoutData(1, 40));
-//		roleContainer.add(this.grid, new VerticalLayoutData(1, 1));
-//		
-//		BorderLayoutData westLayoutData = new BorderLayoutData(0.3);
-//		westLayoutData.setMargins(new Margins(0, 2, 0, 0)); 
-//		westLayoutData.setSplit(true);
-//		westLayoutData.setMaxSize(1000); // TODO: BorderLayoutContainer set max size
-//		
-//		this.setWestWidget(roleContainer, westLayoutData);
-//		this.setCenterWidget(treeMenu);
-//
-//		this.grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedHandler<RoleModel>(){
-//			@Override
-//			public void onSelectionChanged(SelectionChangedEvent<RoleModel> event) {
-//				RoleModel role = grid.getSelectionModel().getSelectedItem();   
-//				treeMenu.retrieve(role.getRoleId());
-//			} 
-//		}); 
+		roleContainer.add(searchBarBuilder.getSearchBar(), new VerticalLayoutData(1, 40));
+		roleContainer.add(this.grid, new VerticalLayoutData(1, 1));
+		
+		BorderLayoutData westLayoutData = new BorderLayoutData(0.3);
+		westLayoutData.setMargins(new Margins(0, 2, 0, 0)); 
+		westLayoutData.setSplit(true);
+		westLayoutData.setMaxSize(1000); // TODO: BorderLayoutContainer set max size
+		
+		this.setWestWidget(roleContainer, westLayoutData);
+		this.setCenterWidget(treeMenu);
+
+		this.grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedHandler<RoleModel>(){
+			@Override
+			public void onSelectionChanged(SelectionChangedEvent<RoleModel> event) {
+				RoleModel role = grid.getSelectionModel().getSelectedItem();   
+				treeMenu.retrieve(role.getRoleId());
+			} 
+		}); 
 	}
 	
 	public Grid<RoleModel> buildGrid(){

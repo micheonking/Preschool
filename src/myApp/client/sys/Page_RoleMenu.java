@@ -20,7 +20,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.treegrid.TreeGrid;
 
-public class Page_TreeMenu extends VerticalLayoutContainer {
+public class Page_RoleMenu extends VerticalLayoutContainer {
 	
 	private TreeGrid<MenuModel> treeGrid = this.buildTreeGrid();
 	private Long roleId;
@@ -41,7 +41,7 @@ public class Page_TreeMenu extends VerticalLayoutContainer {
 		return gridBuilder.getTreeGrid();  
 	}
 
-	public Page_TreeMenu(){
+	public Page_RoleMenu(){
 
 		ButtonBar buttonBar = new ButtonBar();
 
