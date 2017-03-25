@@ -11,16 +11,13 @@ public class OpenTab {
 	private Widget createTab(String className){
 
 		if("CompanyTab.class".equals(className)) {
-			return (Widget) GWT.create(myApp.client.sys.Tab_Company.class) ;
-		}
+            return (Widget) GWT.create(myApp.client.sys.Tab_Company.class) ;
+        }
 
-<<<<<<< HEAD
-=======
 		if("Tab_MenuTree".equals(className)) {
 			return (Widget) GWT.create(myApp.client.sys.Tab_MenuTree.class) ;
 		}
 		
->>>>>>> branch 'master' of https://github.com/micheonking/Preschool
 		// 검사결과 등록 
 		if("Tab_Checkup".equals(className)) {
 			return (Widget) GWT.create(myApp.client.tmc.Tab_Checkup.class) ;
