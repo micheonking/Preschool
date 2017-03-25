@@ -73,7 +73,6 @@ public class Tab_MenuTree extends VerticalLayoutContainer {
 			}
 		}); 
 		buttonBar.add(collapseAll);
-		
 
 		TextButton createRoot = new TextButton("루트등록"); 
 		createRoot.setWidth(70);
