@@ -1,4 +1,9 @@
 /gwt-unitCache/
+<<<<<<< HEAD
 /bin/
 /preschool.war
 /.classpath
+=======
+/.classpath
+/bin/
+>>>>>>> branch 'master' of https://github.com/micheonking/Preschool

@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+=======
+entryPointModules=
+>>>>>>> branch 'master' of https://github.com/micheonking/Preschool
 filesCopiedToWebInfLib=gwt-servlet.jar
