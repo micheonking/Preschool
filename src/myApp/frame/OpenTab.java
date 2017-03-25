@@ -18,6 +18,10 @@ public class OpenTab {
 			return (Widget) GWT.create(myApp.client.sys.Tab_MenuTree.class) ;
 		}
 		
+		if("Tab_RoleMenu".equals(className)) {
+			return (Widget) GWT.create(myApp.client.sys.Tab_RoleMenu.class) ;
+		}
+
 		// 검사결과 등록 
 		if("Tab_Checkup".equals(className)) {
 			return (Widget) GWT.create(myApp.client.tmc.Tab_Checkup.class) ;

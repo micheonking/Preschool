@@ -27,16 +27,13 @@ public class Tab_RoleMenu extends BorderLayoutContainer implements InterfaceGrid
 	private RoleModelProperties properties = GWT.create(RoleModelProperties.class);
 	private Grid<RoleModel> grid = this.buildGrid();
 	private TextField roleName = new TextField();
-	private Page_RoleMenu treeMenu = new Page_RoleMenu();
+	private Page_TreeMenu treeMenu = new Page_TreeMenu();
 	
 	public Tab_RoleMenu() {
 		
 		SearchBarBuilder searchBarBuilder = new SearchBarBuilder(this);
 		searchBarBuilder.addTextField(roleName, "권한명", 150, 50, true); 
 		searchBarBuilder.addRetrieveButton(); 
-		searchBarBuilder.addUpdateButton();
-		searchBarBuilder.addInsertButton();
-		searchBarBuilder.addDeleteButton();
 		
 		this.setBorders(false);
 		
@@ -45,8 +42,8 @@ public class Tab_RoleMenu extends BorderLayoutContainer implements InterfaceGrid
 		roleContainer.add(searchBarBuilder.getSearchBar(), new VerticalLayoutData(1, 40));
 		roleContainer.add(this.grid, new VerticalLayoutData(1, 1));
 		
-		BorderLayoutData westLayoutData = new BorderLayoutData(0.3);
-		westLayoutData.setMargins(new Margins(0, 2, 0, 0)); 
+		BorderLayoutData westLayoutData = new BorderLayoutData(0.4);
+		westLayoutData.setMargins(new Margins(0, 1, 0, 0)); 
 		westLayoutData.setSplit(true);
 		westLayoutData.setMaxSize(1000); // TODO: BorderLayoutContainer set max size
 		
@@ -67,10 +64,10 @@ public class Tab_RoleMenu extends BorderLayoutContainer implements InterfaceGrid
 		GridBuilder<RoleModel> gridBuilder = new GridBuilder<RoleModel>(properties.keyId());  
 		gridBuilder.setChecked(SelectionMode.SINGLE);
 		
-		gridBuilder.addText(properties.roleName(), 150, "권한명", new TextField());
-		gridBuilder.addText(properties.seq(), 50, "순서", new TextField()) ;
-		gridBuilder.addBoolean(properties.managerYnBoolean(), 70, "ADMIN") ;
-		gridBuilder.addText(properties.note(), 800, "비고", new TextField());
+		gridBuilder.addText(properties.roleName(), 150, "권한명"); //, new TextField());
+		gridBuilder.addText(properties.seq(), 50, "순서"); //, new TextField()) ;
+		//gridBuilder.addBoolean(properties.managerYnBoolean(), 70, "ADMIN") ;
+		gridBuilder.addText(properties.note(), 500, "비고"); //, new TextField());
 	
 		return gridBuilder.getGrid(); 
 	}
@@ -83,6 +80,7 @@ public class Tab_RoleMenu extends BorderLayoutContainer implements InterfaceGrid
 
 	@Override
 	public void update() {
+		
 		GridUpdateData<RoleModel> service = new GridUpdateData<RoleModel>(); 
 		service.update(grid.getStore(), "sys.Role.update"); 
 	}

@@ -30,7 +30,7 @@ public class Page_RoleMenu extends VerticalLayoutContainer {
 		MenuModelProperties properties = GWT.create(MenuModelProperties.class);
 		final GridBuilder<MenuModel> gridBuilder = new GridBuilder<MenuModel>(properties.keyId());  
 		gridBuilder.setChecked(SelectionMode.SINGLE);
-		
+
 		gridBuilder.addText(properties.menuName(), 300, "메뉴명", new TextField());
 		gridBuilder.addText(properties.seq(), 50, "순서", new TextField()) ;
 		gridBuilder.addText(properties.className(), 200, "클래스명", new TextField()) ;
