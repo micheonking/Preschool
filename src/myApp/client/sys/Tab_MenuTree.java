@@ -112,7 +112,7 @@ public class Tab_MenuTree extends VerticalLayoutContainer {
 				deleteRow();  
 			}
 		}); 
-		buttonBar.add(deleteButton);
+		buttonBar.add(deleteButton);  
 		
 //		TextButton refreshButton = new TextButton("조회");
 //		

@@ -14,6 +14,7 @@ public class ClassStudentModel extends AbstractDataModel {
 	
 	private StudyClassModel studyClassModel = new StudyClassModel(); 
 	
+	@Override
 	public void setKeyId(Long id) {
 		this.setClassStudentId(id);
 	}

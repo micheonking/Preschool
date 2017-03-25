@@ -38,7 +38,7 @@ public class User {
 // 관리자가 아니라면 본인이 속한 personInfo와 companyId를 찾아 줘야 한다. -> LoginUserModel이 있어야 함.
 // 로그인 사용자가 이미 퇴사한 사용자인 경우 로그인은 제한된다. 
 			
-			result.setModel(1, "login OK", (AbstractDataModel)userInfo);
+			result.setModel(1, "login OK", userInfo);
 			System.out.println(userInfo.getCloseYnBoolean().toString());
 			return ; 
 		}

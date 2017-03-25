@@ -26,7 +26,7 @@ public class PdfDownload implements javax.servlet.Servlet {
 		
 		try {
 			Class<?> loadClass = Class.forName(pdfName);
-			Object executor = (Object)loadClass.newInstance(); 
+			Object executor = loadClass.newInstance(); 
 			Method method 
 		    	= executor.getClass().getMethod("getDocument", new Class[]{BufferedOutputStream.class, HttpServletRequest.class});
 			

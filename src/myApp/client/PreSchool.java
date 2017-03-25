@@ -6,6 +6,7 @@ import myApp.frame.Login;
 
 public class PreSchool implements EntryPoint {
 
+	@Override
 	public void onModuleLoad() {
 		Login login = new Login();
 		login.open(); //로그인 오픈 

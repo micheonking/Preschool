@@ -63,7 +63,7 @@ public class ServiceBrokerImpl extends RemoteServiceServlet implements Interface
 				String methodName =  serviceName.substring(serviceName.lastIndexOf(".") + 1);
 	
 				Class<?> loadClass = Class.forName("myApp.server." + className);
-				Object executor = (Object)loadClass.newInstance(); 
+				Object executor = loadClass.newInstance(); 
 	
 				Method method 
 			    	= executor.getClass().getMethod(methodName, new Class[]{SqlSession.class, ServiceRequest.class, ServiceResult.class}); 
