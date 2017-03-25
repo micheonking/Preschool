@@ -11,8 +11,8 @@ public class OpenTab {
 	private Widget createTab(String className){
 
 		if("CompanyTab.class".equals(className)) {
-			return (Widget) GWT.create(myApp.client.sys.Tab_Company.class) ;
-		}
+            return (Widget) GWT.create(myApp.client.sys.Tab_Company.class) ;
+        }
 
 		if("Tab_MenuTree".equals(className)) {
 			return (Widget) GWT.create(myApp.client.sys.Tab_MenuTree.class) ;
