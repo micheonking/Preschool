@@ -66,7 +66,7 @@ public class Tab_CheckupList extends BorderLayoutContainer implements InterfaceG
 		gridBuilder.addText(checkupModelProperties.checkupName(), 100, "검사종류"); // , checkupTypeComboBox) ;
 		gridBuilder.addText(checkupModelProperties.checkupOrder(), 300, "검사요청사항"); //, new TextField()) ;
 
-		gridBuilder.addText(checkupModelProperties.processName(), 80, "상태구분");	//, checkupProcessComboBox) ;
+		gridBuilder.addText(checkupModelProperties.processName(), 80, "검사상태");	//, checkupProcessComboBox) ;
 		gridBuilder.addText(checkupModelProperties.checkupResult(), 400, "검사결과");	//, new TextField()) ;
 		
 		ActionCell<String> fileUploadCell = new ActionCell<String>("첨부파일", new ActionCell.Delegate<String>(){
@@ -120,7 +120,7 @@ public class Tab_CheckupList extends BorderLayoutContainer implements InterfaceG
 //		Info.display("start date is", ""+startDateField.getValue());
 //		new SimpleMessage("start date is", ""+startDateField.getValue());
 		
-		service.retrieve("tmc.Request.selectByCheckupList");
+		service.retrieve("tmc.Checkup.selectByCheckupList");
 	}
 	
 	@Override

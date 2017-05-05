@@ -1,6 +1,6 @@
 package myApp.frame;
 
-import myApp.client.sys.model.UserCompanyModel;
+import myApp.client.sys.model.CompanyUserModel;
 import myApp.client.sys.model.UserModel;
 import myApp.frame.service.InterfaceServiceCall;
 import myApp.frame.service.ServiceCall;
@@ -98,6 +98,7 @@ public class Login implements InterfaceServiceCall {
 	@Override
 	public void getServiceResult(ServiceResult result) {
 		if(result.getStatus() > 0){
+			
 			UserModel user = (UserModel) result.getResult(0); 
 			LoginUser.setLoginUser(user); 
 
@@ -105,19 +106,22 @@ public class Login implements InterfaceServiceCall {
 				// 관리자이다. 로그인할 회사를 선택한다. 
 				Lookup_LoginCompany loginCompany = new Lookup_LoginCompany();
 				loginCompany.setCallback(new InterfaceLookupResult(){
-
 					@Override
 					public void setLookupResult(Object result) {
-						UserCompanyModel userCompanyModel = (UserCompanyModel)result; 
-						LoginUser.getLoginUser().setCompanyModel(userCompanyModel.getCompanyModel());
+						// 유치원 선택화면에서 선택한 유치원을 로그인한 유치원으로 설정한다.  
+						CompanyUserModel userCompanyModel = (CompanyUserModel)result; 
+						LoginUser.setLoginCompany(userCompanyModel.getCompanyModel());
 						
-//						Info.display("select company", userCompanyModel.getCompanyModel().getCompanyName());
+						// 유치원 세팅하고 메인 윈도우를 오픈한다.
 						openFrame(); 
 					}
 				});
+				
 				loginCompany.show();
 			}
 			else {
+				// 일반사용자는 본인의 회사를 로그인 회사로 설정한다. 
+				LoginUser.setLoginCompany(user.getCompanyModel());
 				openFrame(); 
 			}
 		}
@@ -130,7 +134,7 @@ public class Login implements InterfaceServiceCall {
 		// 일반 사용자이다. 회사 선택없이 로드인한다. 
 		this.viewport.remove(container);
 		
-		MainWindow window = new MainWindow(); 
+		Main_Window window = new Main_Window(); 
 		viewport.add(window.getMainWindow());
 		RootPanel.get().add(viewport);
 	}

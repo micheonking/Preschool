@@ -1,7 +1,7 @@
 package myApp.frame;
 
-import myApp.client.sys.model.UserCompanyModel;
-import myApp.client.sys.model.UserCompanyModelProperties;
+import myApp.client.sys.model.CompanyUserModel;
+import myApp.client.sys.model.CompanyUserModelProperties;
 import myApp.frame.service.GridRetrieveData;
 import myApp.frame.ui.SimpleMessage;
 import myApp.frame.ui.builder.AbstractLookupWindow;
@@ -14,12 +14,12 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 
 public class Lookup_LoginCompany extends AbstractLookupWindow {
 
-	private UserCompanyModelProperties properties = GWT.create(UserCompanyModelProperties.class); // 계약정보로 대체되어야 한다.
+	private CompanyUserModelProperties properties = GWT.create(CompanyUserModelProperties.class); // 계약정보로 대체되어야 한다.
  
-	private Grid<UserCompanyModel> grid = this.buildGrid(); 
+	private Grid<CompanyUserModel> grid = this.buildGrid(); 
 	
-	private Grid<UserCompanyModel> buildGrid(){
-		GridBuilder<UserCompanyModel> gridBuilder = new GridBuilder<UserCompanyModel>(properties.keyId());  
+	private Grid<CompanyUserModel> buildGrid(){
+		GridBuilder<CompanyUserModel> gridBuilder = new GridBuilder<CompanyUserModel>(properties.keyId());  
 		gridBuilder.setChecked(SelectionMode.SINGLE);
 		gridBuilder.addText(properties.companyName(), 150, "고객명") ;
 		gridBuilder.addText(properties.bizNo(), 100, "사업자번호") ;
@@ -46,20 +46,20 @@ public class Lookup_LoginCompany extends AbstractLookupWindow {
 	public void retrieve(){
 		// login user로부터 사용자 정보를 가져온다. 
 		Long userId = LoginUser.getLoginUser().getUserId(); 
-		GridRetrieveData<UserCompanyModel> service = new GridRetrieveData<UserCompanyModel>(grid.getStore());
+		GridRetrieveData<CompanyUserModel> service = new GridRetrieveData<CompanyUserModel>(grid.getStore());
 		service.addParam("userId", userId);
 		service.retrieve("sys.UserCompany.selectByUserId");
 	}
 	
 	@Override
 	public void confirm() {
-		UserCompanyModel userCompanyModel = this.grid.getSelectionModel().getSelectedItem();
+		CompanyUserModel userCompanyModel = this.grid.getSelectionModel().getSelectedItem();
 		if(userCompanyModel != null){
 			this.getCallback().setLookupResult(userCompanyModel);
 			this.hide();
 		}
 		else {
-			new SimpleMessage("선택된 반이 없습니다.");
+			new SimpleMessage("선택된 유치원이 없습니다.");
 		}
 	}
 

@@ -1,7 +1,9 @@
 package myApp.frame.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import myApp.frame.ui.AbstractDataModel;
 import com.sencha.gxt.data.shared.Store;
@@ -12,15 +14,22 @@ import com.sencha.gxt.widget.core.client.info.Info;
 public class TreeGridUpdate<T> implements InterfaceServiceCall{
 	
 	TreeStore<T> treeStore ; 
+	private Map<String, Object> param = new HashMap<String, Object>();
 	
 	public TreeGridUpdate(){
 	} 
+	
+	public void addParam(String key, Object data){
+		this.param.put(key, data); 
+	}
 	
 	public void update(TreeStore<T> treeStore, String serviceName){
 
 		this.treeStore = treeStore;
 
 		if (treeStore.getModifiedRecords().size() > 0 ) {
+			
+			//Info.display("count", "" + treeStore.getModifiedRecords().size());
 			
 			List<AbstractDataModel> updateList = new ArrayList<AbstractDataModel>();
 			
@@ -36,7 +45,9 @@ public class TreeGridUpdate<T> implements InterfaceServiceCall{
 			}
 
 			ServiceRequest request = new ServiceRequest(serviceName);
+			request.setParam(this.param);
 			request.setList(updateList);
+			
 			ServiceCall service = new ServiceCall();
 			service.execute(request, this);
 		} 

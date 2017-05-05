@@ -13,16 +13,13 @@ import myApp.frame.ui.builder.InterfaceGridOperate;
 import myApp.frame.ui.builder.SearchBarBuilder;
 import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.core.client.Style.SelectionMode;
-import com.sencha.gxt.core.client.util.Margins;
-import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent.SelectionChangedHandler;
 
-public class Tab_Role extends BorderLayoutContainer implements InterfaceGridOperate {
+public class Tab_Role extends VerticalLayoutContainer implements InterfaceGridOperate {
 	
 	private RoleModelProperties properties = GWT.create(RoleModelProperties.class);
 	private Grid<RoleModel> grid = this.buildGrid();
@@ -39,22 +36,8 @@ public class Tab_Role extends BorderLayoutContainer implements InterfaceGridOper
 		searchBarBuilder.addDeleteButton();
 		
 		this.setBorders(false);
-//		this.add(searchBarBuilder.getSearchBar(), new VerticalLayoutData(1, 40));
-//		this.add(grid, new VerticalLayoutData(1, 1));
-		
-		
-		VerticalLayoutContainer roleContainer  = new VerticalLayoutContainer(); 
-		
-		roleContainer.add(searchBarBuilder.getSearchBar(), new VerticalLayoutData(1, 40));
-		roleContainer.add(this.grid, new VerticalLayoutData(1, 1));
-		
-		BorderLayoutData westLayoutData = new BorderLayoutData(0.3);
-		westLayoutData.setMargins(new Margins(0, 2, 0, 0)); 
-		westLayoutData.setSplit(true);
-		westLayoutData.setMaxSize(1000); // TODO: BorderLayoutContainer set max size
-		
-		this.setWestWidget(roleContainer, westLayoutData);
-		this.setCenterWidget(treeMenu);
+		this.add(searchBarBuilder.getSearchBar(), new VerticalLayoutData(1, 40));
+		this.add(this.grid, new VerticalLayoutData(1, 1));
 
 		this.grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedHandler<RoleModel>(){
 			@Override

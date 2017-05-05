@@ -7,6 +7,7 @@ import myApp.client.psc.model.StudentModel;
 import myApp.client.psc.model.StudyClassModel;
 import myApp.client.sys.Lookup_UserImage;
 import myApp.frame.LoginUser;
+import myApp.frame.PDFViewer;
 import myApp.frame.service.GridDeleteData;
 import myApp.frame.service.GridInsertRow;
 import myApp.frame.service.GridRetrieveData;
@@ -152,7 +153,7 @@ public class TabPage_Student extends ContentPanel implements Editor<StudentModel
 		ContentPanel imagePanel = new ContentPanel();
 		imagePanel.setHeaderVisible(false);
 	    image.setPixelSize(160, 200);
-	    image.setUrl("FileDownload?fileId=0");
+	    image.setUrl("FileDownload?fileId=0"); // 디폴트 사진보여주기. 
 	    imagePanel.add(image);
 	    
 	    TextButton addImageButton = new TextButton("사진등록");
@@ -163,12 +164,16 @@ public class TabPage_Student extends ContentPanel implements Editor<StudentModel
 			}
 		});
 
-	    TextButton retrieveDetailButton = new TextButton("카드출력");
-	    retrieveDetailButton.addSelectHandler(new SelectHandler() {
+	    TextButton retrievePDFButton = new TextButton("카드출력");
+	    retrievePDFButton.addSelectHandler(new SelectHandler() {
 			@Override
 			public void onSelect(SelectEvent event) {
 				if(studentModel != null){
-					new PDF_Student(studentModel.getStudentId()).show();
+					// PDF 호출하기 
+					PDFViewer viewer = new PDFViewer(); 
+					// 호출하려면 className과 기타 Parameter를 String으로 붙여서 넘겨주어야 한다. 
+					viewer.open("className=psc.StudentPDF&studentId=" + studentModel.getStudentId());
+					
 				}
 				else {
 					new SimpleMessage("원생카드를 출력할 대상 원아를 선택해 주세요."); 
@@ -177,7 +182,7 @@ public class TabPage_Student extends ContentPanel implements Editor<StudentModel
 		});
 
 	    imagePanel.addButton(addImageButton);
-	    imagePanel.addButton(retrieveDetailButton);
+	    imagePanel.addButton(retrievePDFButton);
 	    imagePanel.setButtonAlign(BoxLayoutPack.CENTER);
 	    
 	    // button bar setting 

@@ -178,7 +178,7 @@ public class Tab_Request extends BorderLayoutContainer implements InterfaceGridO
 		gridBuilder.setChecked(SelectionMode.SINGLE);
 
 		gridBuilder.addDate(properties.requestDate(), 90, "진료예정일", new DateField());
-		gridBuilder.addText(properties.treatStateName(), 80, "상태구분");
+		gridBuilder.addText(properties.treatStateName(), 80, "진료상태");
 		gridBuilder.addText(properties.insNo(), 80, "보험번호"); //, new TextField()) ;
 		gridBuilder.addText(properties.patientKorName(), 100, "환자명", lookupPatientField) ;
 		gridBuilder.addText(properties.korName(), 80, "보건의", lookupRequestUserField);

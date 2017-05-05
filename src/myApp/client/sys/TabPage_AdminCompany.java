@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import myApp.client.sys.model.CompanyModel;
-import myApp.client.sys.model.UserCompanyModel;
-import myApp.client.sys.model.UserCompanyModelProperties;
+import myApp.client.sys.model.CompanyUserModel;
+import myApp.client.sys.model.CompanyUserModelProperties;
 import myApp.client.sys.model.UserModel;
 import myApp.frame.service.GridDeleteData;
 import myApp.frame.service.GridInsertRow;
@@ -26,8 +26,8 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 
 public class TabPage_AdminCompany extends ContentPanel implements InterfaceTabPage, InterfaceGridOperate, InterfaceLookupResult {
 	
-	private UserCompanyModelProperties properties = GWT.create(UserCompanyModelProperties.class);
-	private Grid<UserCompanyModel> grid = this.buildGrid();
+	private CompanyUserModelProperties properties = GWT.create(CompanyUserModelProperties.class);
+	private Grid<CompanyUserModel> grid = this.buildGrid();
 	private Long userId = null;
 	
 	private TabPage_AdminCompany getThis(){
@@ -48,9 +48,9 @@ public class TabPage_AdminCompany extends ContentPanel implements InterfaceTabPa
 		this.setButtonAlign(BoxLayoutPack.CENTER);
 	}
 	
-	public Grid<UserCompanyModel> buildGrid(){
+	public Grid<CompanyUserModel> buildGrid(){
 		
-		GridBuilder<UserCompanyModel> gridBuilder = new GridBuilder<UserCompanyModel>(properties.keyId());  
+		GridBuilder<CompanyUserModel> gridBuilder = new GridBuilder<CompanyUserModel>(properties.keyId());  
 		gridBuilder.setChecked(SelectionMode.SINGLE);
 
 		gridBuilder.addText(properties.companyName(), 250, "고객명") ;
@@ -78,16 +78,16 @@ public class TabPage_AdminCompany extends ContentPanel implements InterfaceTabPa
 	@Override
 	public void retrieve() {
 		if(this.userId != null){
-			GridRetrieveData<UserCompanyModel> service = new GridRetrieveData<UserCompanyModel>(grid.getStore());
+			GridRetrieveData<CompanyUserModel> service = new GridRetrieveData<CompanyUserModel>(grid.getStore());
 			service.addParam("userId", this.userId);
-			service.retrieve("sys.UserCompany.selectByUserId");
+			service.retrieve("sys.CompanyUser.selectByUserId");
 		}
 	}
 	
 
 	@Override
 	public void update() {
-		GridUpdateData<UserCompanyModel> service = new GridUpdateData<UserCompanyModel>(); 
+		GridUpdateData<CompanyUserModel> service = new GridUpdateData<CompanyUserModel>(); 
 		service.update(grid.getStore(), "sys.UserCompany.update"); 
 	}
 
@@ -100,8 +100,8 @@ public class TabPage_AdminCompany extends ContentPanel implements InterfaceTabPa
 
 	@Override
 	public void deleteRow() {
-		GridDeleteData<UserCompanyModel> service = new GridDeleteData<UserCompanyModel>();
-		List<UserCompanyModel> checkedList = grid.getSelectionModel().getSelectedItems() ; 
+		GridDeleteData<CompanyUserModel> service = new GridDeleteData<CompanyUserModel>();
+		List<CompanyUserModel> checkedList = grid.getSelectionModel().getSelectedItems() ; 
 		service.deleteRow(grid.getStore(), checkedList, "sys.UserCompany.delete");
 	}
 
@@ -113,11 +113,11 @@ public class TabPage_AdminCompany extends ContentPanel implements InterfaceTabPa
 		
 		for(final CompanyModel companyModel:companyList){
 
-			final UserCompanyModel userCompanyModel = new UserCompanyModel();
+			final CompanyUserModel userCompanyModel = new CompanyUserModel();
 			userCompanyModel.setCompanyId(companyModel.getCompanyId());
 			userCompanyModel.setUserId(this.userId);
 			
-			GridInsertRow<UserCompanyModel> service = new GridInsertRow<UserCompanyModel>();
+			GridInsertRow<CompanyUserModel> service = new GridInsertRow<CompanyUserModel>();
 			
 			service.addCallback(new InterfaceCallback(){
 				@Override

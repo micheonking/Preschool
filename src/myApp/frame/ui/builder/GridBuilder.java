@@ -218,8 +218,9 @@ public class GridBuilder<T> {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public TreeGrid<T> getTreeGrid(){
+	public TreeGrid<T> getTreeGrid(int treeColumn){
 		
+		// treeColumn은 몇번째 트리 화살표가 보일지를 선택한다. 
 		TreeStore<T> treeStore = new TreeStore<T>(this.keyProvider); 
 		ColumnModel<T> columnModel = new ColumnModel<T>(columnList);
 		if(!menuEnable){
@@ -230,7 +231,7 @@ public class GridBuilder<T> {
 		}
 		
 		// 첫번째 칼럼으로 트리를 구성한다. 
-		TreeGrid<T> treeGrid = new TreeGrid<T>(treeStore, columnModel, columnModel.getColumns().get(2));
+		TreeGrid<T> treeGrid = new TreeGrid<T>(treeStore, columnModel, columnModel.getColumns().get(treeColumn));
 		treeGrid.getStyle().setLeafIcon(ResourceIcon.INSTANCE.textButton());
 		
 		if(this.selectionModel != null ){

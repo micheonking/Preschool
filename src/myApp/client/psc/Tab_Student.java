@@ -113,7 +113,7 @@ public class Tab_Student extends BorderLayoutContainer implements InterfaceGridO
 	public void retrieve(){
 		this.grid.getStore().clear();
 		GridRetrieveData<StudentModel> service = new GridRetrieveData<StudentModel>(this.grid.getStore());
-		service.addParam("companyId", LoginUser.getLoginUser().getCompanyId());
+		service.addParam("companyId", LoginUser.getLoginCompany().getCompanyId());
 		service.retrieve("psc.Student.selectByCompanyId");
 	}
 	@Override

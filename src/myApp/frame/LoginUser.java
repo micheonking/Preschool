@@ -2,13 +2,14 @@ package myApp.frame;
 
 import java.util.Date;
 
+import myApp.client.sys.model.CompanyModel;
 import myApp.client.sys.model.UserModel;
 import com.google.gwt.i18n.client.DateTimeFormat;
 
 public class LoginUser {
 
 	private static UserModel loginUser;
-// 	private static Long loginCompany; 
+ 	private static CompanyModel loginCompany; 
 	
 	public static UserModel getLoginUser() {
 		return loginUser;
@@ -18,13 +19,13 @@ public class LoginUser {
 		LoginUser.loginUser = loginUser;
 	}
 	
-//	public static void setLoginCompany(Long companyId){
-//		loginCompany = companyId; 
-//	}
-//	
-//	public static Long getLoginCompany(){
-//		return loginCompany; 
-//	}
+	public static void setLoginCompany(CompanyModel companyModel){
+		loginCompany = companyModel; 
+	}
+	
+	public static CompanyModel getLoginCompany(){
+		return loginCompany; 
+	}
 	
 	public static Boolean isAdmin(){
 		

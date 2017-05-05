@@ -7,7 +7,7 @@ import myApp.frame.ui.AbstractDataModel;
 public class MenuModel extends AbstractDataModel {
 	private Long 	menuId;
 	private Long 	parentId ;
-	private String 	useYn;
+	private String 	hiddenYn;
 	private String 	menuName; 
 	private String 	className;
 	private String 	seq;
@@ -74,19 +74,19 @@ public class MenuModel extends AbstractDataModel {
 		return this.getMenuId();
 	}
 
-	public String getUseYn() {
-		return useYn;
+	public String getHiddenYn() {
+		return hiddenYn;
 	}
 
-	public void setUseYn(String useYn) {
-		this.useYn = useYn;
+	public void setHiddenYn(String hiddenYn) {
+		this.hiddenYn = hiddenYn;
 	}
 
-	public Boolean getUseYnFlag() {
-		return "true".equals(useYn) ; 
+	public Boolean getHiddenYnFlag() {
+		return "true".equals(hiddenYn) ; 
 	} 
-	public void setUseYnFlag(Boolean useYnFlag) {
-		this.useYn = useYnFlag.toString();
+	public void setHiddenYnFlag(Boolean hiddenYnFlag) {
+		this.hiddenYn = hiddenYnFlag.toString();
 	}
 
 	public String getClassName() {
@@ -96,4 +96,5 @@ public class MenuModel extends AbstractDataModel {
 	public void setClassName(String className) {
 		this.className = className;
 	}
+
 }
