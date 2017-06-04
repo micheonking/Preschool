@@ -3,6 +3,7 @@ package myApp.client.acc;
 import java.util.List;
 
 import myApp.client.acc.model.AccountModelProperties;
+import myApp.frame.PDFViewer;
 import myApp.frame.service.GridDeleteData;
 import myApp.frame.service.GridInsertRow;
 import myApp.frame.service.GridRetrieveData;
@@ -15,9 +16,12 @@ import myApp.frame.ui.builder.SearchBarBuilder;
 import myApp.client.acc.model.AccountModel;
 import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.core.client.Style.SelectionMode;
+import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.CollapseEvent;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.CollapseEvent.CollapseHandler;
+import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 
@@ -37,6 +41,18 @@ public class Tab_CommonAccount extends VerticalLayoutContainer implements Interf
 		searchBarBuilder.addUpdateButton();
 		searchBarBuilder.addInsertButton();
 		searchBarBuilder.addDeleteButton();
+	
+	    TextButton retrievePDFButton = new TextButton("PDF출력");
+	    retrievePDFButton.addSelectHandler(new SelectHandler() {
+			@Override
+			public void onSelect(SelectEvent event) {
+				// PDF 호출하기 
+				PDFViewer viewer = new PDFViewer(); 
+				// 호출하려면 className과 기타 Parameter를 String으로 붙여서 넘겨주어야 한다. 
+				viewer.open("className=acc.AccountPDF");
+			}
+		});
+	    searchBarBuilder.getSearchBar().add(retrievePDFButton); 
 		
 		this.add(searchBarBuilder.getSearchBar(), new VerticalLayoutData(1, 40));
 		this.add(grid, new VerticalLayoutData(1, 1));
