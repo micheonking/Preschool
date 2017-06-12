@@ -1,0 +1,3 @@
+# Module preschool
+# RPC service class, partial path of RPC policy file
+myApp.frame.service.InterfaceServiceBroker, 0B83494359959B355889E3476201941E.gwt.rpc

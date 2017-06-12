@@ -8,7 +8,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>serviceBroker</servlet-name>
-    <servlet-class>myApp.service.ServiceBrokerImpl</servlet-class>
+    <servlet-class>myApp.server.ServiceBrokerImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -18,7 +18,7 @@
 
 <servlet>
     <servlet-name>FileUpload</servlet-name>
-    <servlet-class>myApp.service.file.FileUpload</servlet-class>
+    <servlet-class>myApp.server.file.FileUpload</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -28,7 +28,7 @@
   
   <servlet>
     <servlet-name>FileDownload</servlet-name>
-    <servlet-class>myApp.service.file.FileDownload</servlet-class>
+    <servlet-class>myApp.server.file.FileDownload</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -38,7 +38,7 @@
   
   <servlet>
     <servlet-name>PdfDownload</servlet-name>
-    <servlet-class>myApp.service.pdf.PdfDownload</servlet-class>
+    <servlet-class>myApp.server.pdf.PDFLoader</servlet-class>
   </servlet>
 
   <servlet-mapping>
