@@ -37,13 +37,17 @@
   </servlet-mapping>
   
   <servlet>
+<<<<<<< HEAD
     <servlet-name>PdfDownload</servlet-name>
+=======
+    <servlet-name>PDFLoader</servlet-name>
+>>>>>>> branch 'master' of https://github.com/micheonking/Preschool
     <servlet-class>myApp.server.pdf.PDFLoader</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>PdfDownload</servlet-name>
-    <url-pattern>/PdfDownload</url-pattern>
+    <servlet-name>PDFLoader</servlet-name>
+    <url-pattern>/PDFLoader</url-pattern>
   </servlet-mapping>
 
     
